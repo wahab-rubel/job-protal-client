@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from "framer-motion";
-import image from "../../../public/1.jpg"
+import image from '../../assets/images/1.jpg'
 
 const Banner = () => {
  return (
-  <div className="hero bg-base-200 min-h-screen">
+  <div className="hero bg-base-200">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <img
       src={image}

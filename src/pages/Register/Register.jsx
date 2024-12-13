@@ -1,64 +1,27 @@
-import React, { useContext, useState } from "react";
 import Lottie from "lottie-react";
-import registerLottieData from "../../assets/register.json";
+import React, { useContext } from "react";
+import registerLottieData from "../../assets/login.json";
+import SocialLogin from "../../shared/SocialLogin";
 import AuthContext from "../../context/AuthContext/AuthContext";
-
-const validatePassword = (password) => {
-  const minLength = 8;
-  const regex = {
-    hasUpperCase: /[A-Z]/,
-    hasLowerCase: /[a-z]/,
-    hasNumber: /\d/,
-    hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/,
-  };
-
-  if (password.length < minLength) {
-    return `Password must be at least ${minLength} characters long.`;
-  }
-  if (!regex.hasUpperCase.test(password)) {
-    return "Password must contain at least one uppercase letter.";
-  }
-  if (!regex.hasLowerCase.test(password)) {
-    return "Password must contain at least one lowercase letter.";
-  }
-  if (!regex.hasNumber.test(password)) {
-    return "Password must contain at least one number.";
-  }
-  if (!regex.hasSpecialChar.test(password)) {
-    return "Password must contain at least one special character.";
-  }
-
-  return "valid"; // Password is valid
-};
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
-
-  const [passwordMessage, setPasswordMessage] = useState("");
-  const [formError, setFormError] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(email, password);
 
-    // Validate password
-    const validationMessage = validatePassword(password);
-    if (validationMessage !== "valid") {
-      setPasswordMessage(validationMessage);
-      return; // Stop form submission if validation fails
-    }
-
-    // Attempt to create user
+    // password validation:
+    // show password validation error
     createUser(email, password)
       .then((result) => {
-        console.log("User created:", result.user);
-        setFormError(""); // Clear any previous error
+        console.log(result.user);
       })
       .catch((error) => {
-        console.error("Error creating user:", error.message);
-        setFormError(error.message);
+        console.log(error.message);
       });
   };
 
@@ -69,6 +32,7 @@ const Register = () => {
           <Lottie animationData={registerLottieData}></Lottie>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+          <h1 className="ml-8 mt-4 text-5xl font-bold">Register now!</h1>
           <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -76,8 +40,8 @@ const Register = () => {
               </label>
               <input
                 type="email"
-                placeholder="email"
                 name="email"
+                placeholder="email"
                 className="input input-bordered"
                 required
               />
@@ -88,29 +52,22 @@ const Register = () => {
               </label>
               <input
                 type="password"
-                placeholder="password"
                 name="password"
+                placeholder="password"
                 className="input input-bordered"
                 required
-                onChange={(e) => {
-                  const newPassword = e.target.value;
-                  const validationMessage = validatePassword(newPassword);
-                  setPasswordMessage(
-                    validationMessage === "valid" ? "" : validationMessage
-                  );
-                }}
               />
-              {passwordMessage && (
-                <p className="text-red-500 text-sm mt-2">{passwordMessage}</p>
-              )}
+              <label className="label">
+                <a href="#" className="label-text-alt link link-hover">
+                  Forgot password?
+                </a>
+              </label>
             </div>
-            {formError && (
-              <p className="text-red-500 text-sm mt-2">{formError}</p>
-            )}
             <div className="form-control mt-6">
               <button className="btn btn-primary">Register</button>
             </div>
           </form>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
 import React from 'react';
-import jobPortal from "../../public/icons8-job-application-100.png"
+import jobPortal from "../assets/images/1.jpg"
 
 const Footer = () => {
  return (
   <footer className="footer bg-gradient-to-r from-blue-900 to-blue-600 text-white p-10">
-  <aside className="flex flex-col items-start">
-    <img src={jobPortal} alt="" />
+  <aside className="container mx-auto flex flex-col items-start">
+    <img className='w-12' src={jobPortal} alt="" />
     <p className="font-bold text-lg">
       ACME Industries Ltd.
       <br />
