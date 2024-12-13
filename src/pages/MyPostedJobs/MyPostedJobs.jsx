@@ -13,7 +13,7 @@ const MyPostedJobs = () => {
     }, [user.email])
 
     return (
-        <div>
+        <div className='container mx-auto'>
             <h2 className='text-3xl'>My Posted Jobs: {jobs.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table">

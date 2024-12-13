@@ -1,3 +1,4 @@
+import { div } from 'motion/react-client';
 import React from 'react';
 import { FaMapMarkerAlt, FaDollarSign } from "react-icons/fa";
 import { Link } from 'react-router-dom';
@@ -6,7 +7,8 @@ const HotJobCard = ({ job }) => {
   const { title, company, company_logo, requirements, description, location, salaryRange, _id } = job;
 
   return (
-    <div className="card bg-base-100 w-100 shadow-2xl">
+    <div className='container mx-auto'>
+      <div className="card bg-base-100 w-100 shadow-2xl">
       <div className='flex gap-2 m-2'>
         <figure>
           <img className='w-12' src={company_logo} alt="Company Logo" />
@@ -43,6 +45,7 @@ const HotJobCard = ({ job }) => {
           </Link>
         </div>
       </div>
+    </div>
     </div>
   );
 };

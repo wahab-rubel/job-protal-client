@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/images/2.jpg'
 import AuthContext from '../context/AuthContext/AuthContext';
+import { div } from 'motion/react-client';
 
 const Navbar = () => {
 
@@ -18,13 +19,14 @@ const Navbar = () => {
     }
 
     const links = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/myApplications">My Applications</NavLink></li>
-        <li><NavLink to="/addJob">Add A Job</NavLink></li>
-        <li><NavLink to="/myPostedJobs">My Posted Jobs</NavLink></li>
+        <li className='text-black font-extrabold text-xl'><NavLink to="/">Home</NavLink></li>
+        <li className='text-black font-extrabold text-xl'><NavLink to="/myApplications">My Applications</NavLink></li>
+        <li className='text-black font-extrabold text-xl'><NavLink to="/addJob">Add A Job</NavLink></li>
+        <li className='text-black font-extrabold text-xl'><NavLink to="/myPostedJobs">My Posted Jobs</NavLink></li>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className=' bg-teal-500'>
+            <div className="navbar container mx-auto">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -47,7 +49,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">
+                <a className="btn btn-ghost text-xl text-black">
                     <img className='w-12' src={logo} alt="" />
                     <h3 className="text-3xl">Job Portal</h3>
                 </a>
@@ -70,6 +72,7 @@ const Navbar = () => {
                 }
 
             </div>
+        </div>
         </div>
     );
 };

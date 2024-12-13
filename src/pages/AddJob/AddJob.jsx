@@ -51,7 +51,7 @@ const AddJob = () => {
     };
 
     return (
-        <div>
+        <div className='container mx-auto'>
             <h2 className="text-3xl">Post a New Job</h2>
             <form onSubmit={handleAddJob} className="card-body">
                 {/* Job title */}

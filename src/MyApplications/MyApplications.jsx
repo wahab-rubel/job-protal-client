@@ -21,7 +21,7 @@ const MyApplications = () => {
  
 
   return (
-    <div>
+    <div className="container mx-auto">
       <h2 className="text-3xl">My Applications: {jobs.length}</h2>
       <div className="overflow-x-auto">
         <table className="table">

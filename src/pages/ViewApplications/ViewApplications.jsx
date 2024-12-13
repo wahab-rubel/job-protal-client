@@ -61,7 +61,7 @@ const ViewApplications = () => {
   };
 
   return (
-    <div>
+    <div className="container mx-auto">
       <h2 className="text-3xl">
         Applications for this job: {applicationList.length}
       </h2>
